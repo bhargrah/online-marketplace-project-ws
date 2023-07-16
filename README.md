@@ -4,9 +4,12 @@ Monorepo for Online Marketplace Project
 ## Market Place System Context Diagram
 ![](https://github.com/bhargrah/online-marketplace-project-ws/blob/main/marketplace-architecture-ms/src/adr/enterprise-system_sontext_diagram_for_online_market_place.svg)
 
+## Market Place Container Diagram
+![](https://github.com/bhargrah/online-marketplace-project-ws/blob/main/marketplace-architecture-ms/src/adr/enterpise-component_diagram_for_online_market_place.svg)
+
 ## Projects Details
 
-Repo will have below services structure
+Repo will have the below services structure
 
 - Architecture Project [Contains C4 Diagrams]
 - Product Service 
