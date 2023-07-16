@@ -3,7 +3,6 @@ package com.bhargrah.productservicems.controller;
 import com.bhargrah.productservicems.dto.ProductRequest;
 import com.bhargrah.productservicems.dto.ProductResponse;
 import com.bhargrah.productservicems.service.ProductService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

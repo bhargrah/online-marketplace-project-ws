@@ -9,7 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
@@ -27,7 +26,7 @@ public class ProductService {
                 .build();
 
         productRepository.save(product);
-        log.info("Product {} is saved "+product.getId());
+        log.info("Product {} is saved " ,product.getId());
     }
 
     public List<ProductResponse> getAllProducts() {
