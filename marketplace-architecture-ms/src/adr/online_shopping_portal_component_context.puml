@@ -1,4 +1,4 @@
-@startuml "techtribesjs"
+@startuml "enterpise"
 !includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/master/C4_Container.puml
 !includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/master/C4_Container.puml
 
@@ -8,7 +8,7 @@ LAYOUT_TOP_DOWN()
 'LAYOUT_AS_SKETCH()
 'LAYOUT_WITH_LEGEND()
 
-title System Context diagram for Online Market Place
+title Component diagram for Online Market Place
 
 Person(retail_customer, "Retail Customer", "A customer of Online Market Place")
 
