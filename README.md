@@ -1,4 +1,4 @@
-# Online Marketplace Project Monorepo
+# Online Marketplace Project
 Monorepo for Online Marketplace Project 
 
 ## Component Diagram
