@@ -1,8 +1,12 @@
 package com.bhargrah.productservicems;
 
 import com.bhargrah.productservicems.dto.ProductRequest;
+import com.bhargrah.productservicems.repository.ProductRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.dockerjava.zerodep.shaded.org.apache.hc.core5.util.Asserts;
+import jakarta.validation.constraints.AssertTrue;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -30,6 +34,9 @@ class ProductServiceMsApplicationTests {
 	static MongoDBContainer mongoDBContainer = new MongoDBContainer(DockerImageName.parse("mongo:4.4.2"));
 
 	@Autowired
+	ProductRepository productRepository;
+
+	@Autowired
 	private MockMvc mockMvc;
 
 	@Autowired
@@ -44,6 +51,7 @@ class ProductServiceMsApplicationTests {
 				        .contentType(MediaType.APPLICATION_JSON)
 				        .content(objectMapper.writeValueAsString(getProductRequest())))
 				.andExpect(status().isCreated());
+		Assertions.assertEquals(1, productRepository.findAll().size());
 	}
 
 	private ProductRequest getProductRequest() {
