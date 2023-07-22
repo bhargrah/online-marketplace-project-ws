@@ -34,7 +34,6 @@ class ProductServiceMsApplicationTests {
 
 	@Autowired
 	ObjectMapper objectMapper;
-
 	@DynamicPropertySource
 	static void setProperties(DynamicPropertyRegistry dynamicPropertyRegistry){
 		dynamicPropertyRegistry.add("spring.data.mongodb.uri",mongoDBContainer::getReplicaSetUrl);
@@ -54,6 +53,12 @@ class ProductServiceMsApplicationTests {
 				.price(BigDecimal.TEN)
 				.build();
 
+	}
+
+	@Test
+	void shouldReturnAllProducts() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get("/api/product")
+				.contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
 	}
 
 }

@@ -31,6 +31,7 @@ public class ProductService {
 
     public List<ProductResponse> getAllProducts() {
         List<Product> products = productRepository.findAll();
+        log.info("Total Product returned is {} " ,products.size());
         return products.stream().map(this::mapToProductResponse).toList();
     }
 
