@@ -4,6 +4,8 @@ import com.bhargrah.inventoryservice.dto.InventoryResponse;
 import com.bhargrah.inventoryservice.model.Inventory;
 import com.bhargrah.inventoryservice.service.InventoryService;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +28,7 @@ public class InventoryController {
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)
     public List<InventoryResponse> isProductInStock(@RequestParam List<String> skuCodes){
+
         return inventoryService.isProductInStock(skuCodes);
     }
 

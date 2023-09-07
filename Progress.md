@@ -4,3 +4,7 @@
  - Created Repo for online marketplace 
  - Created Order Service infra 
  - Created Product Service infra 
+
+## 7th Sep,2023
+- Web Client integration b/w Order Service & Inventory Service 
+- Created Discovery Service infra 

@@ -5,6 +5,8 @@ import com.bhargrah.inventoryservice.model.Inventory;
 import com.bhargrah.inventoryservice.repository.InventoryRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +17,8 @@ import java.util.List;
 public class InventoryService {
 
     private final InventoryRepository inventoryRepository;
+
+    public static Logger log = LoggerFactory.getLogger(InventoryService.class);
 
     @Transactional(readOnly = true)
     public boolean isInStock(String skuCode){

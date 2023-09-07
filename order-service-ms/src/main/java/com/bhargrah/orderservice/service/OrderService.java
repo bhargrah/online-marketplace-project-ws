@@ -7,6 +7,8 @@ import com.bhargrah.orderservice.model.Order;
 import com.bhargrah.orderservice.model.OrderLineItems;
 import com.bhargrah.orderservice.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -23,7 +25,13 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final WebClient webClient;
 
+    private final WebClient.Builder webClientBuilder;
+
     private static final String INVENTORY_URL = "http://localhost:8083/api/inventory/all";
+    private static final String INVENTORY_URL_EUREKA_ALL = "http://inventory-service/api/inventory/all";
+    private static final String INVENTORY_URL_EUREKA = "http://inventory-service/api/inventory/{skuCode}";
+
+    public static Logger log = LoggerFactory.getLogger(OrderService.class);
 
     public void placeOrder(OrderRequest orderRequest) {
         Order order = new Order();
@@ -36,6 +44,9 @@ public class OrderService {
 
         order.setOrderLineItems(orderLineItems);
 
+        // Check and validate the products sku codes
+        if(validateProductCode(order)) throw new IllegalArgumentException("Order not accepted , product not found ,please try again later");
+
         // Call inventory service , place order if product in stock
         boolean allProductsInStocks = isAllProductsInStocks(order);
 
@@ -44,13 +55,31 @@ public class OrderService {
 
     }
 
+    private boolean validateProductCode(Order order) {
+        return order.getOrderLineItems().stream()
+                     .map(OrderLineItems::getSkuCode)
+                     .map(this::fetchProductState)
+                     .filter(b -> !b)
+                     .toList()
+                     .size() > 0;
+    }
+
+    private Boolean fetchProductState(String skuCode){
+        return webClientBuilder.build().get()
+                .uri(INVENTORY_URL_EUREKA , skuCode)
+                .retrieve()
+                .bodyToMono(Boolean.class)
+                .block();
+    }
+
     private boolean isAllProductsInStocks(Order order) {
 
         List<String> skuCodeList = order.getOrderLineItems().stream().map(OrderLineItems::getSkuCode).toList();
 
         InventoryResponse[] inventoryResponses =
-                webClient.get()
-                        .uri(INVENTORY_URL, uriBuilder -> uriBuilder.queryParam("skuCodes", skuCodeList).build())
+                webClientBuilder.build().get()
+//                        .uri(INVENTORY_URL, uriBuilder -> uriBuilder.queryParam("skuCodes", skuCodeList).build())
+                        .uri(INVENTORY_URL_EUREKA_ALL, uriBuilder -> uriBuilder.queryParam("skuCodes", skuCodeList).build())
                         .retrieve()
                         .bodyToMono(InventoryResponse[].class)
                         .block();
@@ -64,6 +93,5 @@ public class OrderService {
         orderLineItems.setSkuCode(orderLineItemsDto.getSkuCode());
         orderLineItems.setQuantity(orderLineItemsDto.getQuantity());
         return orderLineItems;
-
     }
 }
