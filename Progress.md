@@ -14,3 +14,10 @@
 - Adding api-gateway project 
   - http://localhost:8080/eureka/web
   - http://localhost:8080/api/product
+
+## 20th Sep,2023
+- Adding actuator dependency
+- Api-gateway project 
+  - http://localhost:8080/actuator/gateway/routes
+  - http://localhost:8080/actuator/gateway/globalfilters
+  - http://localhost:8080/actuator/gateway/routefilters
