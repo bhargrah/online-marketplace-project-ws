@@ -21,3 +21,15 @@
   - http://localhost:8080/actuator/gateway/routes
   - http://localhost:8080/actuator/gateway/globalfilters
   - http://localhost:8080/actuator/gateway/routefilters
+
+## 16th Oct,2023
+- Adding keycloak
+- docker run -p 8081:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:22.0.4 start-dev
+- Still to be completed
+
+## 18th Oct,2023
+- Implement Observability Stack 
+- Ref - https://programmingtechie.com/2023/09/09/spring-boot3-observability-grafana-stack/
+- Configured Loki 
+- Configured Tempo
+- Configured Prometheus 
