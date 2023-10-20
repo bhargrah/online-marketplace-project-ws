@@ -33,3 +33,7 @@
 - Configured Loki 
 - Configured Tempo
 - Configured Prometheus 
+
+## 20th Oct,2023
+- Adding Loggers for Gateway , RequestResponseLoggingFilter & GlobalFilter
+- Adding Loggers for Services , CommonsRequestLoggingFilter , still need to tuned
