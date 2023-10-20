@@ -37,3 +37,4 @@
 ## 20th Oct,2023
 - Adding Loggers for Gateway , RequestResponseLoggingFilter & GlobalFilter
 - Adding Loggers for Services , CommonsRequestLoggingFilter , still need to tuned
+- Update puml jar , https://github.com/plantuml-stdlib/C4-PlantUML
