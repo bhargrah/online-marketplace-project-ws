@@ -38,3 +38,13 @@
 - Adding Loggers for Gateway , RequestResponseLoggingFilter & GlobalFilter
 - Adding Loggers for Services , CommonsRequestLoggingFilter , still need to tuned
 - Update puml jar , https://github.com/plantuml-stdlib/C4-PlantUML
+
+## 1st Nov,2023
+- Adding Loggers for Gateway , RequestResponseLoggingFilter & GlobalFilter
+- Adding Loggers for Services , CommonsRequestLoggingFilter , still need to tuned
+- Update puml jar , https://github.com/plantuml-stdlib/C4-PlantUML
+
+## 2nd Nov,2023
+- Install keycloak server on local machine (issue with docker , not able to hook it in docker compose)
+- Command - bin/kc.sh start-dev --http-port=8180 (https://www.keycloak.org/getting-started/getting-started-zip)
+- 

@@ -7,6 +7,7 @@ import com.bhargrah.orderservice.model.Order;
 import com.bhargrah.orderservice.model.OrderLineItems;
 import com.bhargrah.orderservice.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -65,7 +66,7 @@ public class OrderService {
     }
 
     private Boolean fetchProductState(String skuCode){
-        return webClientBuilder.build().get()
+        return webClient.get()
                 .uri(INVENTORY_URL_EUREKA , skuCode)
                 .retrieve()
                 .bodyToMono(Boolean.class)
@@ -75,6 +76,8 @@ public class OrderService {
     private boolean isAllProductsInStocks(Order order) {
 
         List<String> skuCodeList = order.getOrderLineItems().stream().map(OrderLineItems::getSkuCode).toList();
+
+        log.info("Sku Code List : {}",skuCodeList);
 
         InventoryResponse[] inventoryResponses =
                 webClientBuilder.build().get()

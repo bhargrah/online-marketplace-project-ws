@@ -1,6 +1,5 @@
 version: "1"
 services:
-
   loki:
     image: grafana/loki:main
     command: [ "-config.file=/etc/loki/local-config.yaml" ]
@@ -37,5 +36,3 @@ services:
       - GF_AUTH_DISABLE_LOGIN_FORM=true
     ports:
       - "3000:3000"
-volumes:
-  mysql-data:

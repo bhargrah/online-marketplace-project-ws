@@ -9,8 +9,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
-import java.util.Locale;
-
 @Component
 @Order(1) // Set the filter order
 public class RequestResponseLoggingFilter implements GlobalFilter {
@@ -19,14 +17,30 @@ public class RequestResponseLoggingFilter implements GlobalFilter {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         // Log the request information
-        String requestMethod = exchange.getRequest().getMethod().toString();
-        String requestURI = exchange.getRequest().getURI().toString();
-        logger.info("Request - Method: {}, URI: {}", requestMethod, requestURI);
+        String id = exchange.getRequest().getId();
+        String address = exchange.getRequest().getURI().toString();
+        String method = exchange.getRequest().getMethod().toString();
+        String headers = exchange.getRequest().getHeaders().toString();
+        String params =  exchange.getRequest().getQueryParams().toString();
+
+        logger.info("\n------------------------------ " +
+                "\nID: {} " +
+                "\nAddress: {} " +
+                "\nHttp-Method: {} " +
+                "\nHeaders: {} " +
+                "\nPayload: {} " +
+                "\n------------------------------" ,
+                id,address,method,headers,params);
 
         return chain.filter(exchange).then(Mono.fromRunnable(() -> {
             // Log the response information
+            String response_id = exchange.getRequest().getId();
             int responseStatus = exchange.getResponse().getStatusCode().value();
-            logger.info("Response - Status: {}", responseStatus);
+            logger.info("\n------------------------------ " +
+                            "\nID: {} " +
+                            "\nResponse-Code: {} " +
+                            "\n------------------------------" ,
+                    response_id,responseStatus);
         }));
     }
 }
