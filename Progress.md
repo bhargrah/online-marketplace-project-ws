@@ -50,3 +50,5 @@
 
 ## 4th Nov,2023
 - Configuring keycloak and creating relams
+- Setting up authentication and authorization with Gateway
+- Setting Spring Boot Admin Server

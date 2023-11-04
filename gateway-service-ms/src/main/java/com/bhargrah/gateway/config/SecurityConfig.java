@@ -15,7 +15,7 @@ public class SecurityConfig {
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity serverHttpSecurity){
        serverHttpSecurity.csrf(Customizer.withDefaults()) // use defaults
                .authorizeExchange(exchange -> exchange
-                       .pathMatchers("/eureka/**")
+                       .pathMatchers("/eureka/**","/actuator/**")
                        .permitAll()
                        .anyExchange()
                        .authenticated())
