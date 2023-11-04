@@ -46,5 +46,7 @@
 
 ## 2nd Nov,2023
 - Install keycloak server on local machine (issue with docker , not able to hook it in docker compose)
-- Command - bin/kc.sh start-dev --http-port=8180 (https://www.keycloak.org/getting-started/getting-started-zip)
-- 
+- Command - bin/kc.sh start-dev --http-port=8181 (https://www.keycloak.org/getting-started/getting-started-zip)
+
+## 4th Nov,2023
+- Configuring keycloak and creating relams

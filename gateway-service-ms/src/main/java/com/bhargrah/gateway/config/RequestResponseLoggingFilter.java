@@ -42,5 +42,4 @@ public class RequestResponseLoggingFilter implements GlobalFilter {
                             "\n------------------------------" ,
                     response_id,responseStatus);
         }));
-    }
-}
+    }}
