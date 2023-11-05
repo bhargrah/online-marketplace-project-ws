@@ -21,6 +21,7 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 @Transactional
+@Slf4j
 public class OrderService {
 
     private final OrderRepository orderRepository;
@@ -32,9 +33,9 @@ public class OrderService {
     private static final String INVENTORY_URL_EUREKA_ALL = "http://inventory-service/api/inventory/all";
     private static final String INVENTORY_URL_EUREKA = "http://inventory-service/api/inventory/{skuCode}";
 
-    public static Logger log = LoggerFactory.getLogger(OrderService.class);
+    //public static Logger log = LoggerFactory.getLogger(OrderService.class);
 
-    public void placeOrder(OrderRequest orderRequest) {
+    public String placeOrder(OrderRequest orderRequest) {
         Order order = new Order();
         order.setOrderNumber(UUID.randomUUID().toString());
 
@@ -51,7 +52,10 @@ public class OrderService {
         // Call inventory service , place order if product in stock
         boolean allProductsInStocks = isAllProductsInStocks(order);
 
-        if (allProductsInStocks)  orderRepository.save(order);
+        if (allProductsInStocks)  {
+            orderRepository.save(order);
+            return "Order Placed Successfully";
+        }
         else throw new IllegalArgumentException("Product is not in stock ,please try again later");
 
     }

@@ -52,3 +52,7 @@
 - Configuring keycloak and creating relams
 - Setting up authentication and authorization with Gateway
 - Setting Spring Boot Admin Server
+
+## 5th Nov,2023
+- Circuit breaker implementation , Risillience4J
+- Implemented Retries , Timer and Fallback (oder service & inventory service)
