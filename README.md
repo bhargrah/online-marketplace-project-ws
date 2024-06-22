@@ -20,7 +20,7 @@ The project leverages Spring Boot for efficient and scalable development of thes
 ![](architecture-docs/src/adr/enterpise-component_diagram_for_online_market_place.svg)
 
 
-## Projects Details
+## Projects Structure
 
 Repo will have the structure of the below service
 
@@ -28,4 +28,4 @@ Repo will have the structure of the below service
 - Product Service 
 - Order Service
 - Inventory Service
-- Notification Service
+- Discovery Service
