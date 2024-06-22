@@ -2,7 +2,7 @@
 Monorepo for Online Marketplace Project 
 
 ## Component Diagram
-![](https://github.com/bhargrah/online-marketplace-project-ws/blob/main/marketplace-architecture-ms/src/adr/enterprise-system_sontext_diagram_for_online_market_place.svg)
+![]([https://github.com/bhargrah/online-marketplace-project-ws/blob/main/marketplace-architecture-ms/src/adr/enterprise-system_sontext_diagram_for_online_market_place.svg](https://github.com/bhargrah/online-marketplace-project-ws/blob/main/architecture-docs/src/adr/enterpise-component_diagram_for_online_market_place.svg))
 
 ## Container Diagram
 ![](https://github.com/bhargrah/online-marketplace-project-ws/blob/main/marketplace-architecture-ms/src/adr/enterpise-component_diagram_for_online_market_place.svg)
